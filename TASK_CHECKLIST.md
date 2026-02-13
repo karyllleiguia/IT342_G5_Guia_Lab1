@@ -8,4 +8,8 @@ Dashboard/Profile Page - DONE
 Logout Page - DONE
 
 MOBILE: 
-TODO
+Register screen - TODO
+Login screen - TODO
+Dashboard/Profile screen (protected) - TODO
+Logout functionality - TODO
+Connection to the same Spring Boot backend - TODO
