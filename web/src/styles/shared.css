@@ -1,0 +1,146 @@
+/* ============================================================
+   SHARED / REUSABLE CLASSES
+   src/styles/shared.css
+   Imported in every component that needs these classes
+============================================================ */
+
+/* --- Brand Logo (Login + Register) --- */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.brand-logo-icon {
+  font-size: 28px;
+}
+
+.brand-logo-text {
+  font-size: 28px;
+  font-weight: 700;
+  color: #8b6f7d;
+}
+
+/* --- Form Elements --- */
+.form-subtitle {
+  color: #9ca3af;
+  font-size: 14px;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-input,
+.form-select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+  background-color: #f9fafb;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #c9a5b0;
+}
+
+/* --- Buttons --- */
+.btn-primary {
+  padding: 12px;
+  background-color: #c9a5b0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.15s;
+}
+
+.btn-primary:hover {
+  background-color: #b8909e;
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-outline {
+  padding: 12px;
+  background-color: transparent;
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.15s;
+}
+
+.btn-outline:hover {
+  background-color: #f3f4f6;
+}
+
+/* --- Auth Switch Link --- */
+.switch-text {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #6b7280;
+  text-align: center;
+}
+
+.switch-link {
+  color: #8b6f7d;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* --- Card --- */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #ecd7df;
+  border-radius: 12px;
+  padding: 28px 32px;
+}
+
+/* --- Section Title --- */
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #8b6f7d;
+  margin-bottom: 12px;
+}
+
+/* --- Status Badges --- */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+  flex-shrink: 0;
+}
+
+.badge-approved  { background-color: #d4f4dd; color: #166534; }
+.badge-pending   { background-color: #fef3c7; color: #92400e; }
+.badge-completed { background-color: #e0e7ff; color: #3730a3; }

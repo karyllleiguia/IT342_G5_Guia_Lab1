@@ -1,0 +1,110 @@
+/* ============================================================
+   PROFILE PAGE
+   src/styles/Profile.css
+============================================================ */
+
+.profile-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.profile-card {
+  background-color: #ffffff;
+  border: 1px solid #ecd7df;
+  border-radius: 12px;
+  padding: 28px 32px;
+}
+
+.profile-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #8b6f7d;
+  margin-bottom: 4px;
+}
+
+.profile-card-sub {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 24px;
+}
+
+/* --- Info rows (view mode) --- */
+.profile-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.profile-info-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background-color: #faf5f7;
+  border-radius: 10px;
+}
+
+.profile-info-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #ecd7df;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.profile-info-label {
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 0 0 2px 0;
+}
+
+.profile-info-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #8b6f7d;
+  margin: 0;
+}
+
+/* --- Edit form --- */
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-btn-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.profile-btn-row .btn-primary,
+.profile-btn-row .btn-outline {
+  flex: 1;
+}
+
+/* --- Stats grid --- */
+.profile-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.profile-stat-box {
+  background-color: #faf5f7;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.profile-stat-icon  { font-size: 28px; margin-bottom: 8px; }
+.profile-stat-value { font-size: 28px; font-weight: 700; color: #8b6f7d; margin: 0 0 4px 0; }
+.profile-stat-label { font-size: 12px; color: #9ca3af; margin: 0; }

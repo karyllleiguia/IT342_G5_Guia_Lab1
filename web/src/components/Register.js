@@ -1,35 +1,95 @@
-import { useState } from "react";
-import { register } from "../services/api";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { toast } from 'sonner';
+import '../styles/shared.css';
+import '../styles/Register.css';
 
 export default function Register() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: '', email: '', phone: '', password: '', confirmPassword: '',
+  });
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const update = (field) => (e) =>
+    setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+
+  const handleRegister = (e) => {
     e.preventDefault();
-    try {
-      const res = await register({ username, email, password });
-      setMessage(res.data);
-      navigate("/login");
-    } catch (err) {
-      setMessage(err.response.data || "Registration failed");
+    setLoading(true);
+
+    if (formData.password !== formData.confirmPassword) {
+      toast.error('Passwords do not match');
+      setLoading(false);
+      return;
     }
+
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    if (users.find((u) => u.email === formData.email)) {
+      toast.error('Email already registered');
+      setLoading(false);
+      return;
+    }
+
+    const newUser = {
+      id: Date.now().toString(),
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      password: formData.password,
+    };
+
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+    toast.success('Registration successful! Please login.');
+    navigate('/');
+    setLoading(false);
   };
 
+  const fields = [
+    { label: 'Full Name',        field: 'name',            type: 'text',     placeholder: 'Enter your full name' },
+    { label: 'Email',            field: 'email',           type: 'email',    placeholder: 'Enter your email' },
+    { label: 'Phone Number',     field: 'phone',           type: 'tel',      placeholder: 'Enter your phone number' },
+    { label: 'Password',         field: 'password',        type: 'password', placeholder: 'Create a password' },
+    { label: 'Confirm Password', field: 'confirmPassword', type: 'password', placeholder: 'Confirm your password' },
+  ];
+
   return (
-    <div>
-      <h2>Register</h2>
-      {message && <p>{message}</p>}
-      <form onSubmit={handleSubmit}>
-        <input placeholder="Username" value={username} onChange={e=>setUsername(e.target.value)} required/>
-        <input placeholder="Email" type="email" value={email} onChange={e=>setEmail(e.target.value)} required/>
-        <input placeholder="Password" type="password" value={password} onChange={e=>setPassword(e.target.value)} required/>
-        <button type="submit">Register</button>
-      </form>
+    <div className="register-page">
+      <div className="register-card">
+
+        <div className="brand-logo">
+          <span className="brand-logo-icon">📅</span>
+          <h1 className="brand-logo-text">QuickQueue</h1>
+        </div>
+        <p className="form-subtitle">Create your account to get started</p>
+
+        <form onSubmit={handleRegister} className="register-form">
+          {fields.map(({ label, field, type, placeholder }) => (
+            <div key={field} className="form-group">
+              <label className="form-label">{label}</label>
+              <input
+                type={type}
+                className="form-input"
+                placeholder={placeholder}
+                value={formData[field]}
+                onChange={update(field)}
+                required
+              />
+            </div>
+          ))}
+
+          <button type="submit" className="btn-primary" disabled={loading}>
+            {loading ? 'Registering...' : 'Register'}
+          </button>
+        </form>
+
+        <p className="switch-text">
+          Already have an account?{' '}
+          <Link to="/" className="switch-link">Sign in here</Link>
+        </p>
+
+      </div>
     </div>
   );
 }

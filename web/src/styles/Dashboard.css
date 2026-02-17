@@ -1,0 +1,195 @@
+/* ============================================================
+   DASHBOARD PAGE
+   src/styles/Dashboard.css
+============================================================ */
+
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* --- Stats Grid --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  background-color: #ffffff;
+  border: 1px solid #ecd7df;
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+
+.stat-card-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 10px;
+}
+
+.stat-card-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #8b6f7d;
+}
+
+/* --- Search Card --- */
+.search-card {
+  background-color: #ffffff;
+  border: 1px solid #ecd7df;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.search-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #8b6f7d;
+  margin-bottom: 4px;
+}
+
+.search-card-sub {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 16px;
+}
+
+.search-wrapper {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 14px 10px 40px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+  background-color: #f9fafb;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.search-input:focus {
+  border-color: #c9a5b0;
+}
+
+/* --- Appointment List --- */
+.appt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.appt-empty {
+  background-color: #ffffff;
+  border: 1px solid #ecd7df;
+  border-radius: 12px;
+  padding: 48px 24px;
+  text-align: center;
+  color: #9ca3af;
+}
+
+.appt-empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.appt-card {
+  background-color: #ffffff;
+  border: 1px solid #ecd7df;
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.appt-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.appt-card-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.appt-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background-color: #ecd7df;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.appt-dept {
+  font-size: 16px;
+  font-weight: 600;
+  color: #8b6f7d;
+  margin: 0 0 4px 0;
+}
+
+.appt-queue-id {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.appt-queue-id span {
+  font-family: monospace;
+  font-weight: 700;
+  color: #c9a5b0;
+}
+
+.appt-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* --- Queue Position Box --- */
+.queue-position-box {
+  background-color: #fef3e2;
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.queue-position-icon { font-size: 20px; flex-shrink: 0; }
+
+.queue-position-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #92400e;
+  margin: 0 0 2px 0;
+}
+
+.queue-position-note {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
