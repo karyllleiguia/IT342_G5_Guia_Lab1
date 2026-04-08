@@ -4,6 +4,10 @@ import { toast } from 'sonner';
 import '../styles/shared.css';
 import '../styles/BookAppointment.css';
 
+import QueueIdFactory from '../factory/QueueIdFactory';
+import storage from '../adapters/StorageAdapter';
+import { appointmentObserver } from '../observers/AppointmentObserver';
+
 const DEPARTMENTS = [
   'General Medicine', 'Cardiology', 'Dermatology', 'Orthopedics',
   'Pediatrics', 'Gynecology', 'Neurology', 'Ophthalmology',
@@ -17,13 +21,6 @@ const TIME_SLOTS = [
   '03:00 PM', '03:30 PM', '04:00 PM', '04:30 PM', '05:00 PM',
 ];
 
-const generateQueueId = () => {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  return Array.from({ length: 8 }, () =>
-    chars[Math.floor(Math.random() * chars.length)]
-  ).join('');
-};
-
 const todayStr = () => new Date().toISOString().split('T')[0];
 
 export default function BookAppointment() {
@@ -35,7 +32,7 @@ export default function BookAppointment() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem('currentUser') || '{}'));
+    setUser(storage.get('currentUser') || {});
   }, []);
 
   const handleBook = (e) => {
@@ -46,10 +43,13 @@ export default function BookAppointment() {
     }
 
     setLoading(true);
-    const appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
-    const queueId = generateQueueId();
 
-    appointments.push({
+    const appointments = storage.get('appointments') || [];
+
+    const generator = QueueIdFactory.createGenerator(department);
+    const queueId = generator.generate();
+
+    const newAppointment = {
       id: Date.now().toString(),
       userId: user.id,
       queueId,
@@ -58,9 +58,12 @@ export default function BookAppointment() {
       time,
       status: 'approved',
       createdAt: Date.now(),
-    });
+    };
 
-    localStorage.setItem('appointments', JSON.stringify(appointments));
+    appointments.push(newAppointment);
+    storage.set('appointments', appointments);
+    appointmentObserver.notify(newAppointment);
+
     toast.success(`Appointment booked! Queue ID: ${queueId}`);
     navigate('/app');
     setLoading(false);
@@ -69,14 +72,12 @@ export default function BookAppointment() {
   return (
     <div className="book-wrapper">
       <div className="book-card">
-
         <h2 className="book-title">Book an Appointment</h2>
         <p className="book-subtitle">
           Select your preferred department, date, and time
         </p>
 
         <form onSubmit={handleBook} className="book-form">
-
           <div className="form-group">
             <label className="form-label">Department</label>
             <select
@@ -122,14 +123,12 @@ export default function BookAppointment() {
           <button type="submit" className="btn-primary" disabled={loading}>
             {loading ? 'Booking...' : 'Book Appointment'}
           </button>
-
         </form>
 
         <div className="book-info-box">
           <strong>Note:</strong> After booking, you'll receive a unique queue ID.
           Use it on the Dashboard to track your position in the queue.
         </div>
-
       </div>
     </div>
   );

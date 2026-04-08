@@ -4,7 +4,10 @@ import { toast } from 'sonner';
 import '../styles/shared.css';
 import '../styles/Register.css';
 
-export default function Register() {
+import storage from '../adapters/StorageAdapter';
+import withFormValidation, { validators } from '../decorator/withFormValidation';
+
+function RegisterForm({ errors, validate }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '', email: '', phone: '', password: '', confirmPassword: '',
@@ -18,13 +21,14 @@ export default function Register() {
     e.preventDefault();
     setLoading(true);
 
-    if (formData.password !== formData.confirmPassword) {
-      toast.error('Passwords do not match');
+    const isValid = validate(formData);
+    if (!isValid) {
       setLoading(false);
       return;
     }
 
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const users = storage.get('users') || [];
+
     if (users.find((u) => u.email === formData.email)) {
       toast.error('Email already registered');
       setLoading(false);
@@ -40,7 +44,7 @@ export default function Register() {
     };
 
     users.push(newUser);
-    localStorage.setItem('users', JSON.stringify(users));
+    storage.set('users', users);
     toast.success('Registration successful! Please login.');
     navigate('/');
     setLoading(false);
@@ -57,7 +61,6 @@ export default function Register() {
   return (
     <div className="register-page">
       <div className="register-card">
-
         <div className="brand-logo">
           <span className="brand-logo-icon">📅</span>
           <h1 className="brand-logo-text">QuickQueue</h1>
@@ -70,12 +73,14 @@ export default function Register() {
               <label className="form-label">{label}</label>
               <input
                 type={type}
-                className="form-input"
+                className={`form-input ${errors[field] ? 'input-error' : ''}`}
                 placeholder={placeholder}
                 value={formData[field]}
                 onChange={update(field)}
-                required
               />
+              {errors[field] && (
+                <span className="error-text">{errors[field]}</span>
+              )}
             </div>
           ))}
 
@@ -88,8 +93,20 @@ export default function Register() {
           Already have an account?{' '}
           <Link to="/" className="switch-link">Sign in here</Link>
         </p>
-
       </div>
     </div>
   );
 }
+
+const validationRules = {
+  name:            [validators.required],
+  email:           [validators.required, validators.email],
+  phone:           [validators.required],
+  password:        [validators.required, validators.minLength(6)],
+  confirmPassword: [
+    validators.required,
+    (value, formData) => validators.passwordMatch(formData.password)(value),
+  ],
+};
+
+export default withFormValidation(RegisterForm, validationRules);

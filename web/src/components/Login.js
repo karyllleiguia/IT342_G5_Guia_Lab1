@@ -4,6 +4,8 @@ import { toast } from 'sonner';
 import '../styles/shared.css';
 import '../styles/Login.css';
 
+import storage from '../adapters/StorageAdapter';
+
 export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -14,12 +16,12 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
 
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const users = storage.get('users') || [];
     const user = users.find((u) => u.email === email && u.password === password);
 
     setTimeout(() => {
       if (user) {
-        localStorage.setItem('currentUser', JSON.stringify(user));
+        storage.set('currentUser', user);
         toast.success('Login successful!');
         navigate('/app');
       } else {
@@ -32,7 +34,6 @@ export default function Login() {
   return (
     <div className="login-page">
       <div className="login-card">
-
         <div className="brand-logo">
           <span className="brand-logo-icon">📅</span>
           <h1 className="brand-logo-text">QuickQueue</h1>
@@ -73,7 +74,6 @@ export default function Login() {
           Don't have an account?{' '}
           <Link to="/register" className="switch-link">Register here</Link>
         </p>
-
       </div>
     </div>
   );
