@@ -2,14 +2,26 @@ import React, { useState, useEffect } from 'react';
 import '../styles/shared.css';
 import '../styles/Dashboard.css';
 
+import storage from '../adapters/StorageAdapter';
+import QueuePositionCalculator from '../strategy/QueuePositionStrategy';
+import { appointmentObserver } from '../observers/AppointmentObserver';
+
 export default function Dashboard() {
   const [searchQuery, setSearchQuery] = useState('');
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-    const all = JSON.parse(localStorage.getItem('appointments') || '[]');
+    const currentUser = storage.get('currentUser') || {};
+    const all = storage.get('appointments') || [];
     setAppointments(all.filter((a) => a.userId === currentUser.id));
+
+    const unsubscribe = appointmentObserver.subscribe((newAppointment) => {
+      if (newAppointment.userId === currentUser.id) {
+        setAppointments((prev) => [...prev, newAppointment]);
+      }
+    });
+
+    return unsubscribe;
   }, []);
 
   const filtered = appointments.filter(
@@ -19,19 +31,12 @@ export default function Dashboard() {
   );
 
   const approved = appointments.filter((a) => a.status === 'approved');
-  const active   = appointments.filter(
+  const active = appointments.filter(
     (a) => a.status === 'approved' && new Date(a.date) >= new Date()
   );
 
   const getQueuePosition = (apt) => {
-    const all = JSON.parse(localStorage.getItem('appointments') || '[]');
-    return all.filter(
-      (a) =>
-        a.department === apt.department &&
-        a.date       === apt.date &&
-        a.status     === 'approved' &&
-        a.createdAt  <  apt.createdAt
-    ).length;
+    return QueuePositionCalculator.calculate(apt);
   };
 
   const badgeClass = (status) => {
@@ -45,8 +50,6 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-page">
-
-      {/* Stats */}
       <div className="stats-grid">
         {[
           { label: 'Total Appointments', value: appointments.length, icon: '📋' },
@@ -60,7 +63,6 @@ export default function Dashboard() {
         ))}
       </div>
 
-      {/* Search */}
       <div className="search-card">
         <h3 className="search-card-title">Track Your Queue</h3>
         <p className="search-card-sub">Search by queue ID or department name</p>
@@ -76,10 +78,8 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Appointments */}
       <div>
         <h2 className="section-title">Your Appointments</h2>
-
         {filtered.length === 0 ? (
           <div className="appt-empty">
             <div className="appt-empty-icon">📭</div>
@@ -91,7 +91,6 @@ export default function Dashboard() {
               const pos = apt.status === 'approved' ? getQueuePosition(apt) : null;
               return (
                 <div key={apt.id} className="appt-card">
-
                   <div className="appt-card-top">
                     <div className="appt-card-left">
                       <div className="appt-icon-box">📅</div>
@@ -125,14 +124,12 @@ export default function Dashboard() {
                       </div>
                     </div>
                   )}
-
                 </div>
               );
             })}
           </div>
         )}
       </div>
-
     </div>
   );
 }
