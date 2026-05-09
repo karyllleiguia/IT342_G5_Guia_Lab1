@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.features.authentication;
 
 import jakarta.persistence.*;
 import lombok.*;

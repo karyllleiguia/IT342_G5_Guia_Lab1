@@ -1,7 +1,5 @@
-package com.example.demo.controller;
+package com.example.demo.features.authentication;
 
-import com.example.demo.model.User;
-import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
