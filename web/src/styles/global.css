@@ -1,7 +1,6 @@
 /* ============================================================
    GLOBAL / RESET
    src/styles/global.css
-   Imported once in index.js — applies everywhere
 ============================================================ */
 
 * {
@@ -15,7 +14,7 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 16px;
   color: #1f2937;
-  background-color: #faf5f7;
+  background-color: #f2fcff;
 }
 
 a {

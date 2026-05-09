@@ -1,6 +1,6 @@
 /* ============================================================
    DASHBOARD PAGE
-   src/styles/Dashboard.css
+   src/features/appointments/Dashboard.css
 ============================================================ */
 
 .dashboard-page {
@@ -18,7 +18,7 @@
 
 .stat-card {
   background-color: #ffffff;
-  border: 1px solid #ecd7df;
+  border: 2px solid #99daff;
   border-radius: 12px;
   padding: 20px 24px;
 }
@@ -35,13 +35,13 @@
 .stat-card-value {
   font-size: 32px;
   font-weight: 700;
-  color: #8b6f7d;
+  color: #0081cc;
 }
 
 /* --- Search Card --- */
 .search-card {
   background-color: #ffffff;
-  border: 1px solid #ecd7df;
+  border: 2px solid #99daff;
   border-radius: 12px;
   padding: 24px;
 }
@@ -49,7 +49,7 @@
 .search-card-title {
   font-size: 16px;
   font-weight: 600;
-  color: #8b6f7d;
+  color: #0081cc;
   margin-bottom: 4px;
 }
 
@@ -76,7 +76,7 @@
   width: 100%;
   padding: 10px 14px 10px 40px;
   border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #99daff;
   font-size: 14px;
   background-color: #f9fafb;
   outline: none;
@@ -84,7 +84,8 @@
 }
 
 .search-input:focus {
-  border-color: #c9a5b0;
+  border-color: #0081cc;
+  box-shadow: 0 0 0 3px rgba(0, 129, 204, 0.12);
 }
 
 /* --- Appointment List --- */
@@ -96,7 +97,7 @@
 
 .appt-empty {
   background-color: #ffffff;
-  border: 1px solid #ecd7df;
+  border: 2px solid #99daff;
   border-radius: 12px;
   padding: 48px 24px;
   text-align: center;
@@ -110,7 +111,7 @@
 
 .appt-card {
   background-color: #ffffff;
-  border: 1px solid #ecd7df;
+  border: 2px solid #99daff;
   border-radius: 12px;
   padding: 20px 24px;
   display: flex;
@@ -135,7 +136,7 @@
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background-color: #ecd7df;
+  background-color: #e3f2fd;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,7 +147,7 @@
 .appt-dept {
   font-size: 16px;
   font-weight: 600;
-  color: #8b6f7d;
+  color: #0081cc;
   margin: 0 0 4px 0;
 }
 
@@ -159,7 +160,7 @@
 .appt-queue-id span {
   font-family: monospace;
   font-weight: 700;
-  color: #c9a5b0;
+  color: #0081cc;
 }
 
 .appt-meta {
@@ -171,7 +172,7 @@
 
 /* --- Queue Position Box --- */
 .queue-position-box {
-  background-color: #fef3e2;
+  background-color: #e3f2fd;
   border-radius: 8px;
   padding: 12px 16px;
   display: flex;
@@ -184,7 +185,7 @@
 .queue-position-label {
   font-size: 13px;
   font-weight: 600;
-  color: #92400e;
+  color: #0081cc;
   margin: 0 0 2px 0;
 }
 

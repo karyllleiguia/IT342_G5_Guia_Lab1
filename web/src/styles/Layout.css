@@ -5,13 +5,14 @@
 
 .layout-wrapper {
   min-height: 100vh;
-  background-color: #faf5f7;
+  background-color: #f2fcff;
 }
 
 /* --- Header --- */
 .layout-header {
   background-color: #ffffff;
-  border-bottom: 1px solid #ecd7df;
+  border-bottom: 2px solid #99daff;
+  box-shadow: 0 1px 4px rgba(0, 129, 204, 0.06);
 }
 
 .layout-header-inner {
@@ -34,7 +35,7 @@
 .layout-brand-name {
   font-size: 20px;
   font-weight: 700;
-  color: #8b6f7d;
+  color: #0081cc;
 }
 
 .layout-header-right {
@@ -45,7 +46,7 @@
 
 .layout-welcome {
   font-size: 14px;
-  color: #8b6f7d;
+  color: #0081cc;
 }
 
 .layout-logout-btn {
@@ -54,9 +55,9 @@
   gap: 6px;
   padding: 6px 14px;
   background-color: transparent;
-  border: 1px solid #ecd7df;
+  border: 1px solid #99daff;
   border-radius: 8px;
-  color: #8b6f7d;
+  color: #0081cc;
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
@@ -64,13 +65,13 @@
 }
 
 .layout-logout-btn:hover {
-  background-color: #faf5f7;
+  background-color: #f2fcff;
 }
 
 /* --- Navigation --- */
 .layout-nav {
   background-color: #ffffff;
-  border-bottom: 1px solid #ecd7df;
+  border-bottom: 1px solid #99daff;
 }
 
 .layout-nav-inner {
@@ -98,13 +99,13 @@
 }
 
 .layout-nav-btn:hover {
-  color: #8b6f7d;
+  color: #0081cc;
 }
 
 .layout-nav-btn.active {
-  color: #8b6f7d;
+  color: #0081cc;
   font-weight: 600;
-  border-bottom-color: #c9a5b0;
+  border-bottom-color: #0081cc;
 }
 
 /* --- Main Content Area --- */
