@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, useNavigate, Link, useLocation } from 'react-router-dom';
 import { toast } from 'sonner';
-import '../styles/Layout.css';
+import '../../styles/Layout.css';
 
 export default function Layout() {
   const navigate = useNavigate();

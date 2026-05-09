@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import '../styles/shared.css';
-import '../styles/BookAppointment.css';
+import '../../styles/shared.css';
+import './BookAppointment.css';
 
-import QueueIdFactory from '../factory/QueueIdFactory';
-import storage from '../adapters/StorageAdapter';
-import { appointmentObserver } from '../observers/AppointmentObserver';
+import QueueIdFactory from '../../shared/factory/QueueIdFactory';
+import storage from '../../shared/adapters/StorageAdapter';
+import { appointmentObserver } from '../../shared/observers/AppointmentObserver';
 
 const DEPARTMENTS = [
   'General Medicine', 'Cardiology', 'Dermatology', 'Orthopedics',

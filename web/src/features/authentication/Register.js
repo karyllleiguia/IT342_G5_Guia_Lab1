@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'sonner';
-import '../styles/shared.css';
-import '../styles/Register.css';
+import '../../styles/shared.css';
+import './Register.css';
 
-import storage from '../adapters/StorageAdapter';
-import withFormValidation, { validators } from '../decorator/withFormValidation';
+import storage from '../../shared/adapters/StorageAdapter';
+import withFormValidation, { validators } from '../../shared/decorator/withFormValidation';
 
 function RegisterForm({ errors, validate }) {
   const navigate = useNavigate();

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/shared.css';
-import '../styles/Dashboard.css';
-
-import storage from '../adapters/StorageAdapter';
-import QueuePositionCalculator from '../strategy/QueuePositionStrategy';
-import { appointmentObserver } from '../observers/AppointmentObserver';
+import '../../styles/shared.css';
+import './Dashboard.css';
+import storage from '../../shared/adapters/StorageAdapter';
+import appointmentService from './services/appointmentService';
+import QueuePositionCalculator from '../../shared/strategy/QueuePositionStrategy';
+import { appointmentObserver } from '../../shared/observers/AppointmentObserver';
 
 export default function Dashboard() {
   const [searchQuery, setSearchQuery] = useState('');
