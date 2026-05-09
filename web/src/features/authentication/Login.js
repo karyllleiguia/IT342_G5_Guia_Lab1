@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'sonner';
-import '../styles/shared.css';
-import '../styles/Login.css';
+import '../../styles/shared.css';
+import './Login.css';
 
-import storage from '../adapters/StorageAdapter';
+import storage from '../../shared/adapters/StorageAdapter';
 
 export default function Login() {
   const navigate = useNavigate();

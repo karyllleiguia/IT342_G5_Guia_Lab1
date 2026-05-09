@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'sonner';
-import '../styles/shared.css';
-import '../styles/Profile.css';
+import '../../../styles/Profile.css';
+import '../../../styles/shared.css';
 
 export default function Profile() {
   const [user, setUser] = useState(null);
