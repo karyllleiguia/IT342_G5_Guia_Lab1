@@ -1,7 +1,6 @@
 /* ============================================================
    SHARED / REUSABLE CLASSES
    src/styles/shared.css
-   Imported in every component that needs these classes
 ============================================================ */
 
 /* --- Brand Logo (Login + Register) --- */
@@ -20,7 +19,7 @@
 .brand-logo-text {
   font-size: 28px;
   font-weight: 700;
-  color: #8b6f7d;
+  color: #0081cc;
 }
 
 /* --- Form Elements --- */
@@ -47,7 +46,7 @@
 .form-select {
   padding: 10px 14px;
   border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #99daff;
   font-size: 14px;
   background-color: #f9fafb;
   outline: none;
@@ -57,13 +56,14 @@
 
 .form-input:focus,
 .form-select:focus {
-  border-color: #c9a5b0;
+  border-color: #0081cc;
+  box-shadow: 0 0 0 3px rgba(0, 129, 204, 0.12);
 }
 
 /* --- Buttons --- */
 .btn-primary {
   padding: 12px;
-  background-color: #c9a5b0;
+  background-color: #0081cc;
   color: white;
   border: none;
   border-radius: 8px;
@@ -75,7 +75,7 @@
 }
 
 .btn-primary:hover {
-  background-color: #b8909e;
+  background-color: #0070b3;
 }
 
 .btn-primary:disabled {
@@ -87,7 +87,7 @@
   padding: 12px;
   background-color: transparent;
   color: #6b7280;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #99daff;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
@@ -97,7 +97,7 @@
 }
 
 .btn-outline:hover {
-  background-color: #f3f4f6;
+  background-color: #f2fcff;
 }
 
 /* --- Auth Switch Link --- */
@@ -109,7 +109,7 @@
 }
 
 .switch-link {
-  color: #8b6f7d;
+  color: #0081cc;
   font-weight: 600;
   text-decoration: underline;
 }
@@ -117,7 +117,7 @@
 /* --- Card --- */
 .card {
   background-color: #ffffff;
-  border: 1px solid #ecd7df;
+  border: 2px solid #99daff;
   border-radius: 12px;
   padding: 28px 32px;
 }
@@ -126,7 +126,7 @@
 .section-title {
   font-size: 18px;
   font-weight: 700;
-  color: #8b6f7d;
+  color: #0081cc;
   margin-bottom: 12px;
 }
 
@@ -141,9 +141,9 @@
   flex-shrink: 0;
 }
 
-.badge-approved  { background-color: #d4f4dd; color: #166534; }
-.badge-pending   { background-color: #fef3c7; color: #92400e; }
-.badge-completed { background-color: #e0e7ff; color: #3730a3; }
+.badge-approved  { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #81c784; }
+.badge-pending   { background-color: #fff4e6; color: #e65100; border: 1px solid #ffb74d; }
+.badge-completed { background-color: #e3f2fd; color: #1565c0; border: 1px solid #64b5f6; }
 
 .input-error {
   border-color: #e53e3e !important;
